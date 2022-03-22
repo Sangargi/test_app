@@ -1,0 +1,60 @@
+<div class="login-page main">
+    <div class="container">
+        <div class="img-container"></div>
+
+        <h2 class="login-title">Prueba técnica</h2>
+
+        <form [formGroup]="loginForm">
+            <div class="form-group">
+                <div class="input-box">
+                    <label for="email">
+                        <span class="label-icon material-icons">person_outline</span>
+                        <span class="label-name" [ngClass]="{'animation' : focusEmail || form.email.value}">Email</span>
+                    </label>
+                    <input formControlName="email" name="email" class="form-control"
+                        (focus)="focusEmail = true" (blur)="focusEmail = false" />
+                </div>
+
+                <div *ngIf="form.email.invalid && (form.email.dirty || form.email.touched)" class="error-warn">
+                    <div *ngIf="form.email.errors.required">
+                        Email requerido
+                    </div>
+                    <div *ngIf="form.email.errors.email">
+                        El email debe ser válido
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-box">
+                    <label for="password">
+                        <span class="label-icon material-icons">lock</span>
+                        <span class="label-name"  [ngClass]="{'animation' : focusPass || form.password.value}">Contraseña</span>
+                    </label>
+                    <input formControlName="password" type="password" name="password" autocomplete="current-password"
+                        (focus)="focusPass = true" (blur)="focusPass = false" />
+                </div>
+
+                <div *ngIf="form.password.invalid && (form.password.dirty || form.password.touched)" class="error-warn">
+                    <div *ngIf="form.password.errors.required">
+                        Por favor, introduce password
+                    </div>
+                    <div *ngIf="form.password.errors.minlength">
+                        La contraseña debe tener mínimo 5 caracteres
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group is-check">
+                Recordar
+                <label class="switch">
+                    <input formControlName="reminder" type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <button class="submit-button" (click)="sendForm()">Acceder</button>
+        </form>
+
+    </div>
+</div>

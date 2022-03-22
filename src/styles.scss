@@ -1,0 +1,51 @@
+@import url('./assets/css/variables.scss');
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100vh;
+  height: auto;
+  margin: 0;
+  font-family: var(--app-font);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .container {
+    padding: 2rem 1.5rem;
+    width: 300px;
+
+    @media (min-width: 960px) {
+      width: 380px;
+    }
+  }
+
+  &.login-page,
+  &.home-page {
+    background-image: url('./assets/img/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+
+    .container {
+      background-color: var(--white-color);
+
+      .login-title, .home-title{
+        margin: 0;
+        padding: 20px 0 0;
+        text-align: center;
+      }
+    }
+  }
+}
